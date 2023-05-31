@@ -6,25 +6,16 @@ defmodule AnyJson.MixProject do
       app: :any_json,
       version: "0.1.0",
       elixir: "~> 1.12",
+      build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      # Docs
+      package: package(),
       name: "AnyJson",
+      description: "Elixir library to wrap the main JSON libraries",
+      licenses: ["MIT"],
       source_url: "https://github.com/GRoguelon/any_json",
-      homepage_url: "https://hex.pm/packages/any_json",
-      docs: [
-        formatters: ["html"],
-        main: "README",
-        extras: ["README.md"],
-        groups_for_modules: [
-          Adapters: [AnyJson.Jason]
-        ]
-      ],
-      # Dialyzer
-      dialyzer: [
-        plt_file: {:no_warn, "priv/plts/project.plt"},
-        plt_add_apps: [:jason]
-      ]
+      docs: docs(),
+      dialyzer: dialyzer()
     ]
   end
 
@@ -35,6 +26,35 @@ defmodule AnyJson.MixProject do
     else
       []
     end
+  end
+
+  defp docs do
+    [
+      formatters: ["html"],
+      main: "README",
+      extras: ["README.md"],
+      groups_for_modules: [
+        Adapters: [AnyJson.Jason]
+      ]
+    ]
+  end
+
+  defp dialyzer do
+    [
+      plt_file: {:no_warn, "priv/plts/project.plt"},
+      plt_add_apps: [:jason]
+    ]
+  end
+
+  defp package do
+    [
+      # These are the default files included in the package
+      files: ~w[lib mix.exs README* LICENSE*],
+      licenses: ["MIT"],
+      links: %{
+        "Github" => "https://github.com/GRoguelon/any_json"
+      }
+    ]
   end
 
   # Run "mix help deps" to learn about dependencies.
