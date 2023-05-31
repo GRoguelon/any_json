@@ -13,28 +13,35 @@ defmodule AnyJson.MixProject do
       source_url: "https://github.com/GRoguelon/any_json",
       homepage_url: "https://hex.pm/packages/any_json",
       docs: [
-        # The main page in the docs
         formatters: ["html"],
         main: "README",
         extras: ["README.md"],
         groups_for_modules: [
           Adapters: [AnyJson.Jason]
         ]
+      ],
+      # Dialyzer
+      dialyzer: [
+        plt_file: {:no_warn, "priv/plts/project.plt"},
+        plt_add_apps: [:jason]
       ]
     ]
   end
 
   # Run "mix help compile.app" to learn about applications.
   def application do
-    [
-      extra_applications: [:logger]
-    ]
+    if Mix.env() == :test do
+      [extra_applications: [:jason]]
+    else
+      []
+    end
   end
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.3", only: [:dev], runtime: false},
       {:ex_doc, "~> 0.29", only: :dev, runtime: false},
       {:jason, "~> 1.4", optional: true},
       {:mox, "~> 1.0", only: :test}
