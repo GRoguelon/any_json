@@ -4,7 +4,7 @@ defmodule AnyJson.MixProject do
   def project do
     [
       app: :any_json,
-      version: "0.2.0",
+      version: "0.2.1",
       elixir: "~> 1.12",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
@@ -30,7 +30,7 @@ defmodule AnyJson.MixProject do
   defp docs do
     [
       formatters: ["html"],
-      main: "README",
+      main: "readme",
       extras: ["README.md"],
       groups_for_modules: [
         Adapters: [AnyJson.Jason, AnyJson.Poison]
