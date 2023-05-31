@@ -4,7 +4,7 @@ defmodule AnyJson.MixProject do
   def project do
     [
       app: :any_json,
-      version: "0.1.0",
+      version: "0.2.0-rc.0",
       elixir: "~> 1.12",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
