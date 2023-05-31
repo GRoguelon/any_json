@@ -21,6 +21,7 @@ defmodule AnyJson.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:jason, "~> 1.4", optional: true},
       {:mox, "~> 1.0", only: :test}
     ]
   end
