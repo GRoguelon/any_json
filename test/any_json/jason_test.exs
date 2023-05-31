@@ -1,5 +1,5 @@
 defmodule AnyJson.JasonTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case, async: false
 
   alias AnyJson.Jason, as: Subject
 
