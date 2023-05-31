@@ -27,15 +27,17 @@ defmodule AnyJsonTest do
     end
 
     test "decode/2 calls the adapter" do
-      expect(AnyJsonMock, :decode, fn %{hello: 42}, [custom: :option] -> {:ok, "decoded"} end)
+      expect(AnyJsonMock, :decode, fn "\"%{hello: 42}\"", [custom: :option] ->
+        {:ok, "decoded"}
+      end)
 
-      assert Subject.decode(%{hello: 42}, custom: :option) == {:ok, "decoded"}
+      assert Subject.decode("\"%{hello: 42}\"", custom: :option) == {:ok, "decoded"}
     end
 
     test "decode!/2 calls the adapter" do
-      expect(AnyJsonMock, :decode!, fn %{hello: 42}, [custom: :option] -> "decoded" end)
+      expect(AnyJsonMock, :decode!, fn "\"%{hello: 42}\"", [custom: :option] -> "decoded" end)
 
-      assert Subject.decode!(%{hello: 42}, custom: :option) == "decoded"
+      assert Subject.decode!("\"%{hello: 42}\"", custom: :option) == "decoded"
     end
   end
 end
