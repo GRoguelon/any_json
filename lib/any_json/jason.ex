@@ -12,9 +12,7 @@ if Code.ensure_loaded?(Jason) do
 
     Add to your `mix.exs`:
 
-        ```
         {:jason, "~> 1.4"},
-        ```
     """
 
     ## Behaviours

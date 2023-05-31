@@ -4,7 +4,7 @@ defmodule AnyJson.MixProject do
   def project do
     [
       app: :any_json,
-      version: "0.1.0",
+      version: "0.2.0-rc.0",
       elixir: "~> 1.12",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
@@ -21,7 +21,7 @@ defmodule AnyJson.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     if Mix.env() == :test do
-      [extra_applications: [:jason]]
+      [extra_applications: [:jason, :poison]]
     else
       []
     end
@@ -33,7 +33,7 @@ defmodule AnyJson.MixProject do
       main: "README",
       extras: ["README.md"],
       groups_for_modules: [
-        Adapters: [AnyJson.Jason]
+        Adapters: [AnyJson.Jason, AnyJson.Poison]
       ]
     ]
   end
@@ -41,7 +41,7 @@ defmodule AnyJson.MixProject do
   defp dialyzer do
     [
       plt_file: {:no_warn, "priv/plts/project.plt"},
-      plt_add_apps: [:jason]
+      plt_add_apps: [:jason, :poison]
     ]
   end
 
@@ -63,7 +63,8 @@ defmodule AnyJson.MixProject do
       {:dialyxir, "~> 1.3", only: [:dev], runtime: false},
       {:ex_doc, "~> 0.29", only: :dev, runtime: false},
       {:jason, "~> 1.4", optional: true},
-      {:mox, "~> 1.0", only: :test}
+      {:mox, "~> 1.0", only: :test},
+      {:poison, "~> 5.0", optional: true}
     ]
   end
 end
