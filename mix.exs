@@ -63,7 +63,8 @@ defmodule AnyJson.MixProject do
       {:dialyxir, "~> 1.3", only: [:dev], runtime: false},
       {:ex_doc, "~> 0.29", only: :dev, runtime: false},
       {:jason, "~> 1.4", optional: true},
-      {:mox, "~> 1.0", only: :test}
+      {:mox, "~> 1.0", only: :test},
+      {:poison, "~> 5.0", optional: true}
     ]
   end
 end
