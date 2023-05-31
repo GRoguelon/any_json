@@ -21,7 +21,7 @@ defmodule AnyJson.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     if Mix.env() == :test do
-      [extra_applications: [:jason]]
+      [extra_applications: [:jason, :poison]]
     else
       []
     end
@@ -33,7 +33,7 @@ defmodule AnyJson.MixProject do
       main: "README",
       extras: ["README.md"],
       groups_for_modules: [
-        Adapters: [AnyJson.Jason]
+        Adapters: [AnyJson.Jason, AnyJson.Poison]
       ]
     ]
   end
@@ -41,7 +41,7 @@ defmodule AnyJson.MixProject do
   defp dialyzer do
     [
       plt_file: {:no_warn, "priv/plts/project.plt"},
-      plt_add_apps: [:jason]
+      plt_add_apps: [:jason, :poison]
     ]
   end
 
