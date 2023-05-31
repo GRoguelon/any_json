@@ -12,7 +12,6 @@ defmodule AnyJson.MixProject do
       package: package(),
       name: "AnyJson",
       description: "Elixir library to wrap the main JSON libraries",
-      licenses: ["MIT"],
       source_url: "https://github.com/GRoguelon/any_json",
       docs: docs(),
       dialyzer: dialyzer()
